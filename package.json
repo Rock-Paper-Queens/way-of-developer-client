@@ -1,20 +1,60 @@
 {
-  "name": "way-of-developer-client",
+  "name": "with-typescript",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "type-check": "tsc",
+    "storybook": "start-storybook"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Rock-Paper-Queens/way-of-developer-client.git"
+  "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.34",
+    "@fortawesome/free-brands-svg-icons": "^5.15.2",
+    "@fortawesome/free-regular-svg-icons": "^5.15.2",
+    "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@types/styled-components": "^5.1.7",
+    "next": "latest",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-icons": "^4.1.0",
+    "styled-components": "^5.2.1",
+    "styled-reset": "^4.3.4",
+    "tailwindcss": "^2.0.2",
+    "twin.macro": "^2.0.8"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Rock-Paper-Queens/way-of-developer-client/issues"
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@storybook/addon-actions": "^6.1.14",
+    "@storybook/addon-controls": "^6.1.14",
+    "@storybook/addon-essentials": "^6.1.14",
+    "@storybook/addon-knobs": "^6.1.14",
+    "@storybook/addon-links": "^6.1.14",
+    "@storybook/node-logger": "^6.1.14",
+    "@storybook/preset-create-react-app": "^3.1.5",
+    "@storybook/react": "^6.1.14",
+    "@types/node": "^12.12.21",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^16.9.4",
+    "@typescript-eslint/eslint-plugin": "^4.12.0",
+    "@typescript-eslint/parser": "^4.12.0",
+    "awesome-typescript-loader": "^5.2.1",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.17.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "prettier": "^2.2.1",
+    "react-docgen-typescript-loader": "^3.7.2",
+    "typescript": "4.0"
   },
-  "homepage": "https://github.com/Rock-Paper-Queens/way-of-developer-client#readme"
+  "babelMacros": {
+    "twin": {
+      "preset": "styled-components"
+    }
+  },
+  "license": "MIT"
 }
