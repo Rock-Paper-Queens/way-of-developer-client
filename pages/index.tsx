@@ -10,16 +10,6 @@ import Layout from "../components/Layout";
 //   className: "text-black",
 // })``;
 
-interface IProps {
-  hasHover?: boolean;
-}
-
-const Input = styled.input<IProps>(({ hasHover }) => [
-  tw`border rounded`, // Add base styles first
-  hasHover && tw`hover:border-black`, // Then conditional styles
-  // !hasHover && stylesWidth, // Then any css/sass in variables
-]);
-
 const IndexPage: React.FC = () => (
   <Layout title="Home | Next.js + TypeScript Example">
     <h1>{`Hello Next.js 👋`}</h1>
