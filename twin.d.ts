@@ -1,5 +1,3 @@
-import { ComponentType } from "react";
-import { TwFn, TemplateFn } from "twin.macro";
 import "twin.macro";
 import styledImport, { CSSProp, css as cssImport } from "styled-components";
 
@@ -15,6 +13,7 @@ declare module "react" {
     css?: CSSProp;
   }
   // The inline svg css prop
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   interface SVGProps<T> extends SVGProps<SVGSVGElement> {
     css?: CSSProp;
   }

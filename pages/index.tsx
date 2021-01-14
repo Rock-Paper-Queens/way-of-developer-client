@@ -2,13 +2,13 @@ import Link from "next/link";
 import tw, { styled } from "twin.macro";
 import Layout from "../components/Layout";
 
-const StyledP = tw.p`text-yellow-500`;
-const PurpleP = tw(StyledP)`text-purple-500`;
+// const StyledP = tw.p`text-yellow-500`;
+// const PurpleP = tw(StyledP)`text-purple-500`;
 
 // not work
-const BlueP = styled.p.attrs({
-  className: "text-blue-500",
-})``;
+// const BlueP = styled.p.attrs({
+//   className: "text-black",
+// })``;
 
 interface IProps {
   hasHover?: boolean;
@@ -23,12 +23,7 @@ const Input = styled.input<IProps>(({ hasHover }) => [
 const IndexPage: React.FC = () => (
   <Layout title="Home | Next.js + TypeScript Example">
     <h1>{`Hello Next.js 👋`}</h1>
-    <p tw="text-red-500">test red</p>
-    <StyledP>test yellow</StyledP>
-    <PurpleP>test purple</PurpleP>
-    <BlueP>test blue</BlueP>
-    <Input />
-    <Input hasHover />
+    <p tw="text-black">test red</p>
     <p>
       <Link href="/about">
         <a>About</a>
