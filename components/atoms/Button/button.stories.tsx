@@ -1,18 +1,122 @@
-import Button, { ButtonProps } from "./index";
+import Button, { ButtonProps, ButtonType } from "./index";
+import Icon from "../Icon";
+import { mapPropsToTw } from "../../../utils/mapPropsToTw";
 
-export const BasicButton = ({ children, ...args }: ButtonProps): React.ReactElement => (
+export const DefaultButton = ({ children, ...args }: ButtonProps): React.ReactElement => (
   <Button {...args}>{children}</Button>
 );
-BasicButton.args = {
-  children: "Basic Button",
-  hasHover: true,
+DefaultButton.args = {
+  children: "팔로우",
+  onClick: () => console.log("button click!"),
+};
+
+export const CheckedButton = ({ children, ...args }: ButtonProps): React.ReactElement => (
+  <Button {...args}>{children}</Button>
+);
+CheckedButton.args = {
+  buttonType: ButtonType.checked,
+  children: "팔로우 중",
+  onClick: () => console.log("button click!"),
+};
+
+export const AuthButton = ({ children, ...args }: ButtonProps): React.ReactElement => (
+  <Button {...args}>{children}</Button>
+);
+AuthButton.args = {
+  buttonType: ButtonType.auth,
+  children: (
+    <>
+      <Icon type="google" color="white" />
+      {"구글로 참여하기"}
+    </>
+  ),
+  onClick: () => console.log("button click!"),
+};
+
+export const SelectButton = ({ children, ...args }: ButtonProps): React.ReactElement => (
+  <Button {...args}>{children}</Button>
+);
+SelectButton.args = {
+  buttonType: ButtonType.auth,
+  children: (
+    <>
+      <Icon type="sort-down" color="white" />
+      {"챕터 선택"}
+    </>
+  ),
+  onClick: () => console.log("button click!"),
 };
 
 const ButtonStories = {
   title: "atoms/Button",
   component: Button,
   argTypes: {
-    hasHover: "boolean",
+    buttonType: {
+      control: {
+        type: "select",
+        options: Object.keys(ButtonType),
+      },
+    },
+    color: {
+      control: {
+        type: "select",
+        options: Object.keys(mapPropsToTw.color),
+      },
+    },
+    bgColor: {
+      control: {
+        type: "select",
+        options: Object.keys(mapPropsToTw.bgColor),
+      },
+    },
+    fontSize: {
+      control: {
+        type: "select",
+        options: Object.keys(mapPropsToTw.fontSize),
+      },
+    },
+    border: {
+      control: {
+        type: "select",
+        options: Object.keys(mapPropsToTw.border),
+      },
+    },
+    borderColor: {
+      control: {
+        type: "select",
+        options: Object.keys(mapPropsToTw.borderColor),
+      },
+    },
+    borderRadius: {
+      control: {
+        type: "select",
+        options: Object.keys(mapPropsToTw.rounded),
+      },
+    },
+    w: {
+      control: {
+        type: "select",
+        options: Object.keys(mapPropsToTw.width),
+      },
+    },
+    h: {
+      control: {
+        type: "select",
+        options: Object.keys(mapPropsToTw.height),
+      },
+    },
+    m: {
+      control: {
+        type: "select",
+        options: Object.keys(mapPropsToTw.margin),
+      },
+    },
+    p: {
+      control: {
+        type: "select",
+        options: Object.keys(mapPropsToTw.padding),
+      },
+    },
   },
 };
 
