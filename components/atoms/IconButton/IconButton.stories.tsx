@@ -16,8 +16,8 @@ export const RoundIconButton = ({ children, ...args }: IconButtonProps): React.R
 );
 RoundIconButton.args = {
   buttonType: IconButtonType.round,
-  iconType: "heart-active",
-  children: "팔로우 중",
+  iconType: "user",
+  iconHover: "black",
   onClick: () => console.log("button click!"),
 };
 

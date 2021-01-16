@@ -15,17 +15,19 @@ export type StyledIconButtonProps = HTMLProps<HTMLButtonElement> & {
   p?: keyof typeof mapPropsToTw.padding;
   minW?: keyof typeof mapPropsToTw.minWidth;
   maxW?: keyof typeof mapPropsToTw.maxWidth;
+  minH?: keyof typeof mapPropsToTw.minHeight;
+  maxH?: keyof typeof mapPropsToTw.maxHeight;
   /* event props */
   disabled?: boolean;
   hidden?: boolean;
   hover?: keyof typeof mapPropsToTw.event;
 };
 
-export const DefaultButton = styled.button<StyledIconButtonProps>((props) => {
+export const DefaultIconButton = styled.button<StyledIconButtonProps>((props) => {
   /* button props */
   const { bgColor, border, borderColor, borderRadius } = props;
   /* size, spacing props */
-  const { w, h, m, p, minW, maxW } = props;
+  const { w, h, m, p, minW, maxW, minH, maxH } = props;
   /* event props */
   const { disabled, hidden, hover } = props;
 
@@ -34,7 +36,7 @@ export const DefaultButton = styled.button<StyledIconButtonProps>((props) => {
     bgColor ? mapPropsToTw.bgColor[bgColor] : mapPropsToTw.bgColor.transparent,
     border ? mapPropsToTw.border[border] : mapPropsToTw.border.none,
     borderColor ? mapPropsToTw.borderColor[borderColor] : mapPropsToTw.borderColor.black,
-    borderRadius ? mapPropsToTw.rounded[borderRadius] : mapPropsToTw.rounded.base,
+    borderRadius ? mapPropsToTw.rounded[borderRadius] : mapPropsToTw.rounded.none,
 
     /* size, spacing style */
     w && mapPropsToTw.width[w],
@@ -43,6 +45,8 @@ export const DefaultButton = styled.button<StyledIconButtonProps>((props) => {
     p ? mapPropsToTw.padding[p] : mapPropsToTw.padding["1.5"],
     minW ? mapPropsToTw.minWidth[minW] : mapPropsToTw.minWidth.min,
     maxW && mapPropsToTw.maxWidth[maxW],
+    minH && mapPropsToTw.minHeight[minH],
+    maxH && mapPropsToTw.maxHeight[maxH],
 
     /* event style */
     disabled && mapPropsToTw.event["disabled:o30"],
@@ -55,15 +59,16 @@ export const DefaultButton = styled.button<StyledIconButtonProps>((props) => {
   ];
 });
 
-export const RoundIconButton = styled(DefaultButton)<StyledIconButtonProps>(
-  ({ bgColor, border, borderColor }) => [
-    bgColor ? mapPropsToTw.bgColor[bgColor] : mapPropsToTw.bgColor.white,
-    border ? mapPropsToTw.border[border] : mapPropsToTw.border["1"],
-    borderColor ? mapPropsToTw.borderColor[borderColor] : mapPropsToTw.borderColor.black,
+export const RoundIconButton = styled(DefaultIconButton)<StyledIconButtonProps>(
+  ({ w, h, bgColor, borderRadius }) => [
+    w ? mapPropsToTw.width[w] : mapPropsToTw.width["10"],
+    h ? mapPropsToTw.height[h] : mapPropsToTw.height["10"],
+    bgColor ? mapPropsToTw.bgColor[bgColor] : mapPropsToTw.bgColor.greyPrimary,
+    borderRadius ? mapPropsToTw.rounded[borderRadius] : mapPropsToTw.rounded.full,
   ]
 );
 
-export const SquareIconButton = styled(DefaultButton)<StyledIconButtonProps>(
+export const SquareIconButton = styled(DefaultIconButton)<StyledIconButtonProps>(
   ({ bgColor, borderRadius, w, h }) => [
     bgColor ? mapPropsToTw.bgColor[bgColor] : mapPropsToTw.bgColor.warn,
     borderRadius ? mapPropsToTw.rounded[borderRadius] : mapPropsToTw.rounded.lg,
