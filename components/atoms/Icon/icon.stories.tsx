@@ -1,4 +1,4 @@
-import Icon, { IconProps, iconType, iconColor, iconSize } from "./index";
+import Icon, { IconProps, IconType, IconColor, iconSize } from "./index";
 
 export const BasicIcon = ({ ...args }: IconProps): React.ReactElement => <Icon {...args} />;
 BasicIcon.args = {
@@ -12,13 +12,13 @@ const IconStories = {
     type: {
       control: {
         type: "select",
-        options: Object.keys(iconType),
+        options: Object.keys(IconType),
       },
     },
     color: {
       control: {
         type: "select",
-        options: Object.keys(iconColor),
+        options: Object.keys(IconColor),
       },
     },
     size: {
