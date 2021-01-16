@@ -1,5 +1,11 @@
 import { ChangeEvent, ReactNode } from "react";
-import { DefaultButton, AuthButton, SelectButton, StyledButtonProps } from "./button.styled";
+import {
+  DefaultButton,
+  CheckedButton,
+  AuthButton,
+  SelectButton,
+  StyledButtonProps,
+} from "./button.styled";
 
 export enum ButtonType {
   default = "default styled button",
@@ -19,14 +25,9 @@ export type ButtonProps = StyledButtonProps & {
 const Button: React.FC<ButtonProps> = ({ children, buttonType, ...args }) => {
   switch (buttonType) {
     case ButtonType.checked:
-      return (
-        <DefaultButton color="black" bgColor="white" border="1" borderColor="black" {...args}>
-          {children}
-        </DefaultButton>
-      );
+      return <CheckedButton {...args}>{children}</CheckedButton>;
     case ButtonType.auth:
       return <AuthButton {...args}>{children}</AuthButton>;
-
     case ButtonType.select:
       return <SelectButton {...args}>{children}</SelectButton>;
 

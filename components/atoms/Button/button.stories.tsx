@@ -26,7 +26,7 @@ AuthButton.args = {
   buttonType: ButtonType.auth,
   children: (
     <>
-      <Icon type="google" color="white" />
+      <Icon type="google" color="white" size="lg" />
       {"구글로 참여하기"}
     </>
   ),
