@@ -4,8 +4,8 @@ import {
   RoundIconButton,
   SquareIconButton,
   StyledIconButtonProps,
-} from "./IconButton.styled";
-import Icon, { IconType, IconProps } from "../Icon";
+} from "./iconButton.styled";
+import Icon, { IconProps } from "../Icon";
 
 export enum IconButtonType {
   default = "button that only has icon",
@@ -30,25 +30,26 @@ const IconButton: React.FC<IconButtonProps> = ({
   ...args
 }) => {
   const buttonConfig = { onClick };
-  const iconConfig = { iconType, color, size };
+  const buttonStyleConfig = { ...args };
+  const iconConfig = { iconType, color };
 
   switch (buttonType) {
     case IconButtonType.round:
       return (
-        <RoundIconButton aria-label={alt} {...buttonConfig} {...args}>
-          <Icon {...iconConfig} />
+        <RoundIconButton aria-label={alt} {...buttonConfig} {...buttonStyleConfig}>
+          <Icon size={size || "lg"} {...iconConfig} />
         </RoundIconButton>
       );
     case IconButtonType.square:
       return (
-        <SquareIconButton aria-label={alt} {...buttonConfig} {...args}>
-          <Icon {...iconConfig} />
+        <SquareIconButton aria-label={alt} {...buttonConfig} {...buttonStyleConfig}>
+          <Icon size={size || "lg"} {...iconConfig} />
         </SquareIconButton>
       );
     default:
       return (
-        <DefaultButton aria-label={alt} {...buttonConfig} {...args}>
-          <Icon {...iconConfig} />
+        <DefaultButton aria-label={alt} {...buttonConfig} {...buttonStyleConfig}>
+          <Icon size={size || "lg"} {...iconConfig} />
         </DefaultButton>
       );
   }

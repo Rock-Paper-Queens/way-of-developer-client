@@ -1,12 +1,12 @@
 import Button, { IconButtonProps, IconButtonType } from "./index";
-import Icon from "../Icon";
+import Icon, { IconColor } from "../Icon";
 import { mapPropsToTw } from "../../../utils/mapPropsToTw";
 
 export const DefaultIconButton = ({ children, ...args }: IconButtonProps): React.ReactElement => (
   <Button {...args}>{children}</Button>
 );
 DefaultIconButton.args = {
-  children: "팔로우",
+  iconType: "heart-active",
   onClick: () => console.log("button click!"),
   hover: "hover:o80",
 };
@@ -16,6 +16,7 @@ export const RoundIconButton = ({ children, ...args }: IconButtonProps): React.R
 );
 RoundIconButton.args = {
   buttonType: IconButtonType.round,
+  iconType: "heart-active",
   children: "팔로우 중",
   onClick: () => console.log("button click!"),
 };
@@ -25,9 +26,10 @@ export const SquareIconButton = ({ children, ...args }: IconButtonProps): React.
 );
 SquareIconButton.args = {
   buttonType: IconButtonType.square,
+  iconType: "heart-active",
   children: (
     <>
-      <Icon type="google" color="white" size="lg" m="r2" />
+      <Icon iconType="google" color="white" size="lg" m="r2" />
       {"구글로 참여하기"}
     </>
   ),
@@ -47,19 +49,19 @@ const IconButtonStories = {
     color: {
       control: {
         type: "select",
-        options: Object.keys(mapPropsToTw.color),
+        options: Object.keys(IconColor),
+      },
+    },
+    size: {
+      control: {
+        type: "select",
+        options: ["xs", "lg", "sm", "1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x", "9x", "10x"],
       },
     },
     bgColor: {
       control: {
         type: "select",
         options: Object.keys(mapPropsToTw.bgColor),
-      },
-    },
-    fontSize: {
-      control: {
-        type: "select",
-        options: Object.keys(mapPropsToTw.fontSize),
       },
     },
     border: {

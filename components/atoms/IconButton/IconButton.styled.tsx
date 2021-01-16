@@ -8,9 +8,6 @@ export type StyledIconButtonProps = HTMLProps<HTMLButtonElement> & {
   border?: keyof typeof mapPropsToTw.border;
   borderColor?: keyof typeof mapPropsToTw.borderColor;
   borderRadius?: keyof typeof mapPropsToTw.rounded;
-  /* font props */
-  color?: keyof typeof mapPropsToTw.color;
-  fontSize?: keyof typeof mapPropsToTw.fontSize;
   /* size, spacing props */
   w?: keyof typeof mapPropsToTw.width;
   h?: keyof typeof mapPropsToTw.height;
@@ -27,8 +24,6 @@ export type StyledIconButtonProps = HTMLProps<HTMLButtonElement> & {
 export const DefaultButton = styled.button<StyledIconButtonProps>((props) => {
   /* button props */
   const { bgColor, border, borderColor, borderRadius } = props;
-  /* font props */
-  const { color, fontSize } = props;
   /* size, spacing props */
   const { w, h, m, p, minW, maxW } = props;
   /* event props */
@@ -36,21 +31,17 @@ export const DefaultButton = styled.button<StyledIconButtonProps>((props) => {
 
   return [
     /* button style */
-    bgColor ? mapPropsToTw.bgColor[bgColor] : mapPropsToTw.bgColor.black,
-    border ? mapPropsToTw.border[border] : mapPropsToTw.border["0"],
+    bgColor ? mapPropsToTw.bgColor[bgColor] : mapPropsToTw.bgColor.transparent,
+    border ? mapPropsToTw.border[border] : mapPropsToTw.border.none,
     borderColor ? mapPropsToTw.borderColor[borderColor] : mapPropsToTw.borderColor.black,
     borderRadius ? mapPropsToTw.rounded[borderRadius] : mapPropsToTw.rounded.base,
 
-    /* font style */
-    color ? mapPropsToTw.color[color] : mapPropsToTw.color.white,
-    fontSize ? mapPropsToTw.fontSize[fontSize] : mapPropsToTw.fontSize.sm,
-
     /* size, spacing style */
-    w ? mapPropsToTw.width[w] : mapPropsToTw.width.auto,
-    h ? mapPropsToTw.height[h] : mapPropsToTw.height["7"],
-    m ? mapPropsToTw.margin[m] : mapPropsToTw.margin["0"],
-    p ? mapPropsToTw.padding[p] : mapPropsToTw.padding.x5,
-    minW && mapPropsToTw.minWidth[minW],
+    w && mapPropsToTw.width[w],
+    h && mapPropsToTw.height[h],
+    m ? mapPropsToTw.margin[m] : mapPropsToTw.margin.none,
+    p ? mapPropsToTw.padding[p] : mapPropsToTw.padding["1.5"],
+    minW ? mapPropsToTw.minWidth[minW] : mapPropsToTw.minWidth.min,
     maxW && mapPropsToTw.maxWidth[maxW],
 
     /* event style */
@@ -65,8 +56,7 @@ export const DefaultButton = styled.button<StyledIconButtonProps>((props) => {
 });
 
 export const RoundIconButton = styled(DefaultButton)<StyledIconButtonProps>(
-  ({ color, bgColor, border, borderColor }) => [
-    color ? mapPropsToTw.color[color] : mapPropsToTw.color.black,
+  ({ bgColor, border, borderColor }) => [
     bgColor ? mapPropsToTw.bgColor[bgColor] : mapPropsToTw.bgColor.white,
     border ? mapPropsToTw.border[border] : mapPropsToTw.border["1"],
     borderColor ? mapPropsToTw.borderColor[borderColor] : mapPropsToTw.borderColor.black,
@@ -74,9 +64,8 @@ export const RoundIconButton = styled(DefaultButton)<StyledIconButtonProps>(
 );
 
 export const SquareIconButton = styled(DefaultButton)<StyledIconButtonProps>(
-  ({ bgColor, fontSize, borderRadius, w, h }) => [
+  ({ bgColor, borderRadius, w, h }) => [
     bgColor ? mapPropsToTw.bgColor[bgColor] : mapPropsToTw.bgColor.warn,
-    fontSize ? mapPropsToTw.fontSize[fontSize] : mapPropsToTw.fontSize.base,
     borderRadius ? mapPropsToTw.rounded[borderRadius] : mapPropsToTw.rounded.lg,
     w ? mapPropsToTw.width[w] : mapPropsToTw.width.full,
     h ? mapPropsToTw.height[h] : mapPropsToTw.height["12"],
