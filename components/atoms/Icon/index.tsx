@@ -112,13 +112,13 @@ export type iconSize =
 //   ri = "react-icons",
 //   fa = "fontawesome",
 // }
-export interface IconProps {
+export type IconProps = {
   // lib?: IconLib;
   iconType: keyof typeof IconType;
   color?: keyof typeof IconColor;
   size?: iconSize;
   m?: keyof typeof mapPropsToTw.margin;
-}
+};
 
 /* Component Creation */
 const Icon: React.FC<IconProps> = ({ iconType, color, size, m }) => {
