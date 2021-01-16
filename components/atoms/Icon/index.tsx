@@ -40,7 +40,10 @@ import {
   faGoogle,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
+import { StyledSpan } from "./icon.styled";
+import { mapPropsToTw } from "../../../utils/mapPropsToTw";
 
+/* Type Definition */
 export const iconType = {
   "heart-active": fasHeart,
   "heart-inActive": farHeart,
@@ -109,21 +112,24 @@ export type iconSize =
 //   ri = "react-icons",
 //   fa = "fontawesome",
 // }
-
 export interface IconProps {
   // lib?: IconLib;
   type: keyof typeof iconType;
   color?: keyof typeof iconColor;
   size?: iconSize;
+  m?: keyof typeof mapPropsToTw.margin;
 }
 
-const Icon: React.FC<IconProps> = ({ type, color, size }) => {
+/* Component Creation */
+const Icon: React.FC<IconProps> = ({ type, color, size, m }) => {
   return (
-    <FontAwesomeIcon
-      icon={iconType[type]}
-      color={color ? iconColor[color] : iconColor.black}
-      size={size}
-    />
+    <StyledSpan m={m}>
+      <FontAwesomeIcon
+        icon={iconType[type]}
+        color={color ? iconColor[color] : iconColor.black}
+        size={size}
+      />
+    </StyledSpan>
   );
 };
 
