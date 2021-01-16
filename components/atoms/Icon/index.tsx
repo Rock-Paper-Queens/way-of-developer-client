@@ -44,7 +44,7 @@ import { StyledSpan } from "./icon.styled";
 import { mapPropsToTw } from "../../../utils/mapPropsToTw";
 
 /* Type Definition */
-export const iconType = {
+export const IconType = {
   "heart-active": fasHeart,
   "heart-inActive": farHeart,
   "bookmark-active": fasBookmark,
@@ -82,7 +82,7 @@ export const iconType = {
   "clock-inActive": farClock,
 };
 
-export const iconColor = {
+export const IconColor = {
   black: "#000000",
   white: "#ffffff",
   "grey-primary": "#F0F3F5",
@@ -112,21 +112,21 @@ export type iconSize =
 //   ri = "react-icons",
 //   fa = "fontawesome",
 // }
-export interface IconProps {
+export type IconProps = {
   // lib?: IconLib;
-  type: keyof typeof iconType;
-  color?: keyof typeof iconColor;
+  iconType: keyof typeof IconType;
+  color?: keyof typeof IconColor;
   size?: iconSize;
   m?: keyof typeof mapPropsToTw.margin;
-}
+};
 
 /* Component Creation */
-const Icon: React.FC<IconProps> = ({ type, color, size, m }) => {
+const Icon: React.FC<IconProps> = ({ iconType, color, size, m }) => {
   return (
     <StyledSpan m={m}>
       <FontAwesomeIcon
-        icon={iconType[type]}
-        color={color ? iconColor[color] : iconColor.black}
+        icon={IconType[iconType]}
+        color={color ? IconColor[color] : IconColor.black}
         size={size}
       />
     </StyledSpan>
