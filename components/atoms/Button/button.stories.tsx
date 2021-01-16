@@ -8,6 +8,7 @@ export const DefaultButton = ({ children, ...args }: ButtonProps): React.ReactEl
 DefaultButton.args = {
   children: "팔로우",
   onClick: () => console.log("button click!"),
+  hover: "hover:o80",
 };
 
 export const CheckedButton = ({ children, ...args }: ButtonProps): React.ReactElement => (
@@ -26,7 +27,7 @@ AuthButton.args = {
   buttonType: ButtonType.auth,
   children: (
     <>
-      <Icon type="google" color="white" size="lg" />
+      <Icon type="google" color="white" size="lg" m="r2" />
       {"구글로 참여하기"}
     </>
   ),
@@ -37,10 +38,10 @@ export const SelectButton = ({ children, ...args }: ButtonProps): React.ReactEle
   <Button {...args}>{children}</Button>
 );
 SelectButton.args = {
-  buttonType: ButtonType.auth,
+  buttonType: ButtonType.select,
   children: (
     <>
-      <Icon type="sort-down" color="white" />
+      <Icon type="sort-down" color="grey-text" m="r2" />
       {"챕터 선택"}
     </>
   ),
@@ -115,6 +116,34 @@ const ButtonStories = {
       control: {
         type: "select",
         options: Object.keys(mapPropsToTw.padding),
+      },
+    },
+    minW: {
+      control: {
+        type: "select",
+        options: Object.keys(mapPropsToTw.minWidth),
+      },
+    },
+    maxW: {
+      control: {
+        type: "select",
+        options: Object.keys(mapPropsToTw.maxWidth),
+      },
+    },
+    disabled: {
+      control: {
+        type: "boolean",
+      },
+    },
+    hidden: {
+      control: {
+        type: "boolean",
+      },
+    },
+    hover: {
+      control: {
+        type: "select",
+        options: Object.keys(mapPropsToTw.event),
       },
     },
   },

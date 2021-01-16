@@ -15,37 +15,40 @@ export enum ButtonType {
 }
 
 export type ButtonProps = StyledButtonProps & {
-  // HTMLProps<HTMLButtonElement> & {
   buttonType: ButtonType;
   children: ReactNode;
   onClick: (e: ChangeEvent<HTMLInputElement>) => void;
-  // hasHover: boolean;
 };
 
-const Button: React.FC<ButtonProps> = ({ children, buttonType, ...args }) => {
+const Button: React.FC<ButtonProps> = ({ children, buttonType, onClick, ...args }) => {
+  const buttonConfig = { onClick };
+
   switch (buttonType) {
     case ButtonType.checked:
-      return <CheckedButton {...args}>{children}</CheckedButton>;
+      return (
+        <CheckedButton {...buttonConfig} {...args}>
+          {children}
+        </CheckedButton>
+      );
     case ButtonType.auth:
-      return <AuthButton {...args}>{children}</AuthButton>;
+      return (
+        <AuthButton {...buttonConfig} {...args}>
+          {children}
+        </AuthButton>
+      );
     case ButtonType.select:
-      return <SelectButton {...args}>{children}</SelectButton>;
-
+      return (
+        <SelectButton {...buttonConfig} {...args}>
+          {children}
+        </SelectButton>
+      );
     default:
-      return <DefaultButton {...args}>{children}</DefaultButton>;
+      return (
+        <DefaultButton {...buttonConfig} {...args}>
+          {children}
+        </DefaultButton>
+      );
   }
 };
 
 export default Button;
-
-// background-color
-// border
-// text color
-// font-family
-// width / full-width
-// onClick
-// hover
-// active
-// disable
-// hidden
-// border-radius

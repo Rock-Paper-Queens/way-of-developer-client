@@ -3,40 +3,69 @@ import tw, { styled } from "twin.macro";
 import { mapPropsToTw } from "../../../utils/mapPropsToTw";
 
 export type StyledButtonProps = HTMLProps<HTMLButtonElement> & {
-  hasHover?: boolean;
-  fullWidth?: boolean;
-  color?: keyof typeof mapPropsToTw.color;
+  /* button props */
   bgColor?: keyof typeof mapPropsToTw.bgColor;
-  fontSize?: keyof typeof mapPropsToTw.fontSize;
   border?: keyof typeof mapPropsToTw.border;
   borderColor?: keyof typeof mapPropsToTw.borderColor;
   borderRadius?: keyof typeof mapPropsToTw.rounded;
+  /* font props */
+  color?: keyof typeof mapPropsToTw.color;
+  fontSize?: keyof typeof mapPropsToTw.fontSize;
+  /* size, spacing props */
   w?: keyof typeof mapPropsToTw.width;
   h?: keyof typeof mapPropsToTw.height;
   m?: keyof typeof mapPropsToTw.margin;
   p?: keyof typeof mapPropsToTw.padding;
+  minW?: keyof typeof mapPropsToTw.minWidth;
+  maxW?: keyof typeof mapPropsToTw.maxWidth;
+  /* event props */
+  disabled?: boolean;
+  hidden?: boolean;
+  hover?: keyof typeof mapPropsToTw.event;
 };
 
-export const DefaultButton = styled.button<StyledButtonProps>(
-  ({ bgColor, color, fontSize, borderRadius, border, borderColor, w, h, m, p }) => [
-    color ? mapPropsToTw.color[color] : mapPropsToTw.color.white,
+export const DefaultButton = styled.button<StyledButtonProps>((props) => {
+  /* button props */
+  const { bgColor, border, borderColor, borderRadius } = props;
+  /* font props */
+  const { color, fontSize } = props;
+  /* size, spacing props */
+  const { w, h, m, p, minW, maxW } = props;
+  /* event props */
+  const { disabled, hidden, hover } = props;
+
+  return [
+    /* button style */
     bgColor ? mapPropsToTw.bgColor[bgColor] : mapPropsToTw.bgColor.black,
-    fontSize ? mapPropsToTw.fontSize[fontSize] : mapPropsToTw.fontSize.sm,
     border ? mapPropsToTw.border[border] : mapPropsToTw.border["0"],
     borderColor ? mapPropsToTw.borderColor[borderColor] : mapPropsToTw.borderColor.black,
     borderRadius ? mapPropsToTw.rounded[borderRadius] : mapPropsToTw.rounded.base,
+
+    /* font style */
+    color ? mapPropsToTw.color[color] : mapPropsToTw.color.white,
+    fontSize ? mapPropsToTw.fontSize[fontSize] : mapPropsToTw.fontSize.sm,
+
+    /* size, spacing style */
     w ? mapPropsToTw.width[w] : mapPropsToTw.width.auto,
     h ? mapPropsToTw.height[h] : mapPropsToTw.height["7"],
     m ? mapPropsToTw.margin[m] : mapPropsToTw.margin["0"],
     p ? mapPropsToTw.padding[p] : mapPropsToTw.padding.x5,
+    minW && mapPropsToTw.minWidth[minW],
+    maxW && mapPropsToTw.maxWidth[maxW],
 
+    /* event style */
+    disabled && mapPropsToTw.event["disabled:o30"],
+    hidden && mapPropsToTw.display.hidden,
+    hover && mapPropsToTw.event[hover],
+
+    /* default reset */
     tw`outline-none`,
     tw`cursor-pointer`,
-  ]
-);
+  ];
+});
 
 export const CheckedButton = styled(DefaultButton)<StyledButtonProps>(
-  ({ color, bgColor, border, borderColor, w, h }) => [
+  ({ color, bgColor, border, borderColor }) => [
     color ? mapPropsToTw.color[color] : mapPropsToTw.color.black,
     bgColor ? mapPropsToTw.bgColor[bgColor] : mapPropsToTw.bgColor.white,
     border ? mapPropsToTw.border[border] : mapPropsToTw.border["1"],
@@ -54,20 +83,11 @@ export const AuthButton = styled(DefaultButton)<StyledButtonProps>(
   ]
 );
 
-export const SelectButton = styled.button<StyledButtonProps>(
-  ({ bgColor, color, fontSize, borderRadius, border, borderColor, w, h, m, p }) => [
-    color ? mapPropsToTw.color[color] : tw`text-white`,
-    bgColor ? mapPropsToTw.bgColor[bgColor] : tw`bg-black`,
-    fontSize ? mapPropsToTw.fontSize[fontSize] : tw`text-sm`,
-    border ? mapPropsToTw.border[border] : tw`border-0`,
-    borderColor ? mapPropsToTw.borderColor[borderColor] : tw`border-black`,
-    borderRadius ? mapPropsToTw.rounded[borderRadius] : tw`rounded`,
-    w ? mapPropsToTw.width[w] : tw`w-auto`,
-    h ? mapPropsToTw.height[h] : tw`h-7`,
-    m ? mapPropsToTw.margin[m] : tw`m-0`,
-    p ? mapPropsToTw.padding[p] : tw`px-5`,
-
-    tw`outline-none`,
-    tw`cursor-pointer`,
+export const SelectButton = styled(DefaultButton)<StyledButtonProps>(
+  ({ bgColor, color, fontSize, h }) => [
+    color ? mapPropsToTw.color[color] : mapPropsToTw.color.greyText,
+    bgColor ? mapPropsToTw.bgColor[bgColor] : mapPropsToTw.bgColor.greyPrimary,
+    fontSize ? mapPropsToTw.fontSize[fontSize] : mapPropsToTw.fontSize.xs,
+    h ? mapPropsToTw.height[h] : mapPropsToTw.height["6"],
   ]
 );
