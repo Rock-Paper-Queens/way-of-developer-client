@@ -118,18 +118,6 @@ const ButtonStories = {
         options: Object.keys(mapPropsToTw.padding),
       },
     },
-    minW: {
-      control: {
-        type: "select",
-        options: Object.keys(mapPropsToTw.minWidth),
-      },
-    },
-    maxW: {
-      control: {
-        type: "select",
-        options: Object.keys(mapPropsToTw.maxWidth),
-      },
-    },
     disabled: {
       control: {
         type: "boolean",
