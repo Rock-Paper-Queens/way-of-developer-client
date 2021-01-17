@@ -1,33 +1,32 @@
 import { HTMLProps } from "react";
 import tw, { styled } from "twin.macro";
 import { mapPropsToTw } from "../../../utils/mapPropsToTw";
+import {
+  BackgroundProps,
+  BorderProps,
+  SizeProps,
+  SpacingProps,
+  PositionProps,
+  EventProps,
+} from "../../../utils/styleProps";
 
-export type StyledIconButtonProps = HTMLProps<HTMLButtonElement> & {
-  /* button props */
-  bgColor?: keyof typeof mapPropsToTw.bgColor;
-  border?: keyof typeof mapPropsToTw.border;
-  borderColor?: keyof typeof mapPropsToTw.borderColor;
-  borderRadius?: keyof typeof mapPropsToTw.rounded;
-  /* size, spacing props */
-  w?: keyof typeof mapPropsToTw.width;
-  h?: keyof typeof mapPropsToTw.height;
-  m?: keyof typeof mapPropsToTw.margin;
-  p?: keyof typeof mapPropsToTw.padding;
-  minW?: keyof typeof mapPropsToTw.minWidth;
-  maxW?: keyof typeof mapPropsToTw.maxWidth;
-  minH?: keyof typeof mapPropsToTw.minHeight;
-  maxH?: keyof typeof mapPropsToTw.maxHeight;
-  /* event props */
-  disabled?: boolean;
-  hidden?: boolean;
-  hover?: keyof typeof mapPropsToTw.event;
-};
+export type StyledIconButtonProps = HTMLProps<HTMLButtonElement> &
+  BackgroundProps &
+  BorderProps &
+  SizeProps &
+  SpacingProps &
+  PositionProps &
+  EventProps & {
+    disabled?: boolean;
+  };
 
 export const DefaultIconButton = styled.button<StyledIconButtonProps>((props) => {
   /* button props */
   const { bgColor, border, borderColor, borderRadius } = props;
   /* size, spacing props */
   const { w, h, m, p, minW, maxW, minH, maxH } = props;
+  /* position props */
+  const { position, positionDir } = props;
   /* event props */
   const { disabled, hidden, hover } = props;
 
@@ -47,6 +46,10 @@ export const DefaultIconButton = styled.button<StyledIconButtonProps>((props) =>
     maxW && mapPropsToTw.maxWidth[maxW],
     minH && mapPropsToTw.minHeight[minH],
     maxH && mapPropsToTw.maxHeight[maxH],
+
+    /* position style */
+    position && mapPropsToTw.position[position],
+    positionDir && mapPropsToTw.positionDir[positionDir],
 
     /* event style */
     disabled && mapPropsToTw.event["disabled:o30"],
@@ -70,9 +73,9 @@ export const RoundIconButton = styled(DefaultIconButton)<StyledIconButtonProps>(
 
 export const SquareIconButton = styled(DefaultIconButton)<StyledIconButtonProps>(
   ({ bgColor, borderRadius, w, h }) => [
-    bgColor ? mapPropsToTw.bgColor[bgColor] : mapPropsToTw.bgColor.warn,
-    borderRadius ? mapPropsToTw.rounded[borderRadius] : mapPropsToTw.rounded.lg,
-    w ? mapPropsToTw.width[w] : mapPropsToTw.width.full,
-    h ? mapPropsToTw.height[h] : mapPropsToTw.height["12"],
+    w ? mapPropsToTw.width[w] : mapPropsToTw.width["6"],
+    h ? mapPropsToTw.height[h] : mapPropsToTw.height["6"],
+    bgColor ? mapPropsToTw.bgColor[bgColor] : mapPropsToTw.bgColor.black,
+    borderRadius ? mapPropsToTw.rounded[borderRadius] : mapPropsToTw.rounded.base,
   ]
 );

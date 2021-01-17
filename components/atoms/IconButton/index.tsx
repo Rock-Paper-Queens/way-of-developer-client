@@ -6,6 +6,7 @@ import {
   StyledIconButtonProps,
 } from "./iconButton.styled";
 import Icon, { IconColor, IconProps } from "../Icon";
+import { getStyleConfigFromArgs } from "../../../utils/getStyleConfigFromArg";
 
 /* Type Definition */
 export enum IconButtonType {
@@ -29,8 +30,8 @@ const IconButton: React.FC<IconButtonProps> = ({
   onClick,
   iconType,
   iconHover,
-  color,
-  size,
+  iconColor,
+  iconSize,
   ...args
 }) => {
   /* State */
@@ -38,18 +39,15 @@ const IconButton: React.FC<IconButtonProps> = ({
 
   /* Props Config */
   const buttonConfig = { onClick };
-  const buttonStyleConfig = { ...args };
-  const iconConfig = {
-    iconType,
-    size: size || "lg",
-  };
+  const buttonStyleConfig = getStyleConfigFromArgs(args);
 
   /* Helper Func */
   const renderHoverIconColor = (): keyof typeof IconColor => {
-    if (!iconHover) return color || "grey-text";
-    return isHover ? iconHover : color || "grey-text";
+    if (!iconHover) return iconColor || "grey-text";
+    return isHover ? iconHover : iconColor || "grey-text";
   };
 
+  /* render */
   switch (buttonType) {
     case IconButtonType.round:
       return (
@@ -60,22 +58,45 @@ const IconButton: React.FC<IconButtonProps> = ({
           {...buttonConfig}
           {...buttonStyleConfig}
         >
-          <Icon color={renderHoverIconColor()} {...iconConfig} />
+          <Icon iconType={iconType} iconColor={renderHoverIconColor()} />
         </RoundIconButton>
       );
+
     case IconButtonType.square:
       return (
-        <SquareIconButton aria-label={alt} {...buttonConfig} {...buttonStyleConfig}>
-          <Icon {...iconConfig} />
+        <SquareIconButton
+          aria-label={alt}
+          position="relative"
+          {...buttonConfig}
+          {...buttonStyleConfig}
+        >
+          <Icon
+            iconType={iconType}
+            iconColor={iconColor || "white"}
+            iconSize={iconSize || "sm"}
+            w="10"
+            h="6"
+            position="absolute"
+            positionDir="mid"
+          />
         </SquareIconButton>
       );
+
     default:
       return (
         <DefaultIconButton aria-label={alt} {...buttonConfig} {...buttonStyleConfig}>
-          <Icon {...iconConfig} />
+          <Icon iconType={iconType} iconColor={iconColor || "black"} />
         </DefaultIconButton>
       );
   }
 };
 
 export default IconButton;
+
+// TODO
+/*
+1. icon size
+2. icon color
+3. button error
+4. global style
+*/

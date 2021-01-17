@@ -1,5 +1,5 @@
 import Button, { IconButtonProps, IconButtonType } from "./index";
-import Icon, { IconColor } from "../Icon";
+import { IconColor } from "../Icon";
 import { mapPropsToTw } from "../../../utils/mapPropsToTw";
 
 export const DefaultIconButton = ({ children, ...args }: IconButtonProps): React.ReactElement => (
@@ -26,13 +26,7 @@ export const SquareIconButton = ({ children, ...args }: IconButtonProps): React.
 );
 SquareIconButton.args = {
   buttonType: IconButtonType.square,
-  iconType: "heart-active",
-  children: (
-    <>
-      <Icon iconType="google" color="white" size="lg" m="r2" />
-      {"구글로 참여하기"}
-    </>
-  ),
+  iconType: "plus",
   onClick: () => console.log("button click!"),
 };
 
