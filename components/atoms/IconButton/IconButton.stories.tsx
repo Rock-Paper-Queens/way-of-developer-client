@@ -1,79 +1,61 @@
-import Button, { ButtonProps, ButtonType } from "./index";
-import Icon from "../Icon";
+import Button, { IconButtonProps, IconButtonType } from "./index";
+import { IconColor } from "../Icon";
 import { mapPropsToTw } from "../../../utils/mapPropsToTw";
 
-export const DefaultButton = ({ children, ...args }: ButtonProps): React.ReactElement => (
+export const DefaultIconButton = ({ children, ...args }: IconButtonProps): React.ReactElement => (
   <Button {...args}>{children}</Button>
 );
-DefaultButton.args = {
-  children: "팔로우",
+DefaultIconButton.args = {
+  iconType: "heart-active",
   onClick: () => console.log("button click!"),
   hover: "hover:o80",
 };
 
-export const CheckedButton = ({ children, ...args }: ButtonProps): React.ReactElement => (
+export const RoundIconButton = ({ children, ...args }: IconButtonProps): React.ReactElement => (
   <Button {...args}>{children}</Button>
 );
-CheckedButton.args = {
-  buttonType: ButtonType.checked,
-  children: "팔로우 중",
+RoundIconButton.args = {
+  buttonType: IconButtonType.round,
+  iconType: "user",
+  iconHover: "black",
   onClick: () => console.log("button click!"),
 };
 
-export const AuthButton = ({ children, ...args }: ButtonProps): React.ReactElement => (
+export const SquareIconButton = ({ children, ...args }: IconButtonProps): React.ReactElement => (
   <Button {...args}>{children}</Button>
 );
-AuthButton.args = {
-  buttonType: ButtonType.auth,
-  children: (
-    <>
-      <Icon iconType="google" iconColor="white" iconSize="lg" m="r2" />
-      {"구글로 참여하기"}
-    </>
-  ),
+SquareIconButton.args = {
+  buttonType: IconButtonType.square,
+  iconType: "plus",
   onClick: () => console.log("button click!"),
 };
 
-export const SelectButton = ({ children, ...args }: ButtonProps): React.ReactElement => (
-  <Button {...args}>{children}</Button>
-);
-SelectButton.args = {
-  buttonType: ButtonType.select,
-  children: (
-    <>
-      <Icon iconType="sort-down" iconColor="grey-text" m="r2" />
-      {"챕터 선택"}
-    </>
-  ),
-  onClick: () => console.log("button click!"),
-};
-
-const ButtonStories = {
-  title: "atoms/Button",
+const IconButtonStories = {
+  title: "atoms/IconButton",
   component: Button,
   argTypes: {
     buttonType: {
       control: {
         type: "select",
-        options: Object.keys(ButtonType),
+        options: Object.keys(IconButtonType),
       },
     },
     color: {
       control: {
         type: "select",
-        options: Object.keys(mapPropsToTw.fontColor),
+        options: Object.keys(IconColor),
+      },
+    },
+    size: {
+      control: {
+        type: "select",
+        options: ["xs", "lg", "sm", "1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x", "9x", "10x"],
       },
     },
     bgColor: {
       control: {
         type: "select",
         options: Object.keys(mapPropsToTw.bgColor),
-      },
-    },
-    fontSize: {
-      control: {
-        type: "select",
-        options: Object.keys(mapPropsToTw.fontSize),
       },
     },
     border: {
@@ -128,13 +110,7 @@ const ButtonStories = {
         type: "boolean",
       },
     },
-    hover: {
-      control: {
-        type: "select",
-        options: Object.keys(mapPropsToTw.event),
-      },
-    },
   },
 };
 
-export default ButtonStories;
+export default IconButtonStories;
