@@ -40,8 +40,8 @@ import {
   faGoogle,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
-import { StyledSpan } from "./icon.styled";
-import { mapPropsToTw } from "../../../utils/mapPropsToTw";
+import { StyledSpan, StyledSpanProps } from "./icon.styled";
+import { SizeProp } from "@fortawesome/fontawesome-svg-core";
 
 /* Type Definition */
 export const IconType = {
@@ -93,41 +93,34 @@ export const IconColor = {
   "grey-light": "#FAFAFB",
 };
 
-export type iconSize =
-  | "xs"
-  | "lg"
-  | "sm"
-  | "1x"
-  | "2x"
-  | "3x"
-  | "4x"
-  | "5x"
-  | "6x"
-  | "7x"
-  | "8x"
-  | "9x"
-  | "10x";
-
 // export enum IconLib {
 //   ri = "react-icons",
 //   fa = "fontawesome",
 // }
-export type IconProps = {
+export type IconProps = StyledSpanProps & {
   // lib?: IconLib;
   iconType: keyof typeof IconType;
-  color?: keyof typeof IconColor;
-  size?: iconSize;
-  m?: keyof typeof mapPropsToTw.margin;
+  iconColor?: keyof typeof IconColor;
+  iconSize?: SizeProp;
 };
 
 /* Component Creation */
-const Icon: React.FC<IconProps> = ({ iconType, color, size, m }) => {
+const Icon: React.FC<IconProps> = ({
+  iconType,
+  iconColor,
+  iconSize,
+  m,
+  w,
+  h,
+  position,
+  positionDir,
+}) => {
   return (
-    <StyledSpan m={m}>
+    <StyledSpan m={m} w={w} h={h} position={position} positionDir={positionDir}>
       <FontAwesomeIcon
         icon={IconType[iconType]}
-        color={color ? IconColor[color] : IconColor.black}
-        size={size}
+        color={iconColor ? IconColor[iconColor] : IconColor.black}
+        size={iconSize ? iconSize : "lg"}
       />
     </StyledSpan>
   );
