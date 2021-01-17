@@ -1,7 +1,7 @@
 import tw from "twin.macro";
 
 export const mapPropsToTw = {
-  color: {
+  fontColor: {
     transparent: tw`text-transparent`,
     black: tw`text-black`,
     white: tw`text-white`,
@@ -49,7 +49,7 @@ export const mapPropsToTw = {
     full: tw`rounded-full`,
   },
   border: {
-    "0": tw`border-0`,
+    none: tw`border-0`,
     "1": tw`border`,
     "2": tw`border-2`,
     "4": tw`border-4`,
@@ -72,8 +72,14 @@ export const mapPropsToTw = {
   },
   width: {
     auto: tw`w-auto`,
-    "0": tw`w-0`,
-    "16": tw`w-4`,
+    none: tw`w-0`,
+    base: tw`w-4`, // 16px
+    "5": tw`w-5`,
+    "6": tw`w-6`,
+    "7": tw`w-7`,
+    "8": tw`w-8`,
+    "9": tw`w-9`,
+    "10": tw`w-10`,
     "160": tw`w-40`,
     "1/2": tw`w-1/2`,
     "1/4": tw`w-1/4`,
@@ -82,13 +88,12 @@ export const mapPropsToTw = {
     screen: tw`w-screen`,
   },
   minWidth: {
-    "0": tw`min-w-0`,
+    none: tw`min-w-0`,
     min: tw`min-w-min`,
     max: tw`min-w-max`,
     full: tw`min-w-full`,
   },
   maxWidth: {
-    "0": tw`max-w-0`,
     none: tw`max-w-none`,
     xs: tw`max-w-xs`, // 20rem
     sm: tw`max-w-sm`, // 24rem
@@ -111,7 +116,7 @@ export const mapPropsToTw = {
     "screen-xl": tw`max-w-screen-xl`, // 1280px
   },
   height: {
-    "0": tw`h-0`,
+    none: tw`h-0`,
     base: tw`h-4`,
     "5": tw`h-5`,
     "6": tw`h-6`,
@@ -123,13 +128,23 @@ export const mapPropsToTw = {
     "12": tw`h-12`,
     "14": tw`h-14`,
     "16": tw`h-16`,
-    "10rem": tw`h-40`,
-    "50%": tw`h-1/2`,
+    "160": tw`h-40`,
+    "1/2": tw`h-1/2`,
     full: tw`h-full`,
     screen: tw`h-screen`,
   },
+  minHeight: {
+    none: tw`min-h-0`,
+    full: tw`min-h-full`,
+    screen: tw`min-h-screen`,
+  },
+  maxHeight: {
+    none: tw`max-h-0`,
+    full: tw`max-h-full`,
+    screen: tw`max-h-screen`,
+  },
   margin: {
-    "0": tw`m-0`,
+    none: tw`m-0`,
     "1": tw`m-1`,
     x1: tw`mx-1`,
     l1: tw`ml-1`,
@@ -139,7 +154,13 @@ export const mapPropsToTw = {
     r4: tw`mr-4`,
   },
   padding: {
-    "0": tw`p-0`,
+    none: tw`p-0`,
+    "1": tw`p-1`,
+    "1.5": tw`p-1.5`,
+    "2": tw`p-2`,
+    "3": tw`p-3`,
+    "4": tw`p-4`,
+    "5": tw`p-5`,
     x5: tw`px-5`,
   },
   event: {
@@ -154,5 +175,18 @@ export const mapPropsToTw = {
   },
   display: {
     hidden: tw`hidden`,
+  },
+  flexDir: {
+    row: tw``,
+    col: tw``,
+  },
+  position: {
+    relative: tw`relative`,
+    absolute: tw`absolute`,
+    fixed: tw`fixed`,
+    sticky: tw`sticky`,
+  },
+  positionDir: {
+    mid: tw`top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`,
   },
 };
