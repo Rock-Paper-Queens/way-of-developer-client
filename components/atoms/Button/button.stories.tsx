@@ -27,7 +27,7 @@ AuthButton.args = {
   buttonType: ButtonType.auth,
   children: (
     <>
-      <Icon type="google" color="white" size="lg" m="r2" />
+      <Icon iconType="google" iconColor="white" iconSize="lg" m="r2" />
       {"구글로 참여하기"}
     </>
   ),
@@ -41,7 +41,7 @@ SelectButton.args = {
   buttonType: ButtonType.select,
   children: (
     <>
-      <Icon type="sort-down" color="grey-text" m="r2" />
+      <Icon iconType="sort-down" iconColor="grey-text" m="r2" />
       {"챕터 선택"}
     </>
   ),
@@ -61,7 +61,7 @@ const ButtonStories = {
     color: {
       control: {
         type: "select",
-        options: Object.keys(mapPropsToTw.color),
+        options: Object.keys(mapPropsToTw.fontColor),
       },
     },
     bgColor: {
