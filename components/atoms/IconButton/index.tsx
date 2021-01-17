@@ -4,7 +4,7 @@ import {
   RoundIconButton,
   SquareIconButton,
   StyledIconButtonProps,
-} from "./iconButton.styled";
+} from "./IconButton.styled";
 import Icon, { IconColor, IconProps } from "../Icon";
 import { getStyleConfigFromArgs } from "../../../utils/getStyleConfigFromArg";
 
@@ -69,16 +69,9 @@ const IconButton: React.FC<IconButtonProps> = ({
           position="relative"
           {...buttonConfig}
           {...buttonStyleConfig}
+          p="none"
         >
-          <Icon
-            iconType={iconType}
-            iconColor={iconColor || "white"}
-            iconSize={iconSize || "sm"}
-            w="10"
-            h="6"
-            position="absolute"
-            positionDir="mid"
-          />
+          <Icon iconType={iconType} iconColor={iconColor || "white"} iconSize={iconSize || "sm"} />
         </SquareIconButton>
       );
 
@@ -92,11 +85,3 @@ const IconButton: React.FC<IconButtonProps> = ({
 };
 
 export default IconButton;
-
-// TODO
-/*
-1. icon size
-2. icon color
-3. button error
-4. global style
-*/

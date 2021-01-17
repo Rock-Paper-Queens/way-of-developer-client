@@ -100,18 +100,6 @@ const IconButtonStories = {
         options: Object.keys(mapPropsToTw.padding),
       },
     },
-    minW: {
-      control: {
-        type: "select",
-        options: Object.keys(mapPropsToTw.minWidth),
-      },
-    },
-    maxW: {
-      control: {
-        type: "select",
-        options: Object.keys(mapPropsToTw.maxWidth),
-      },
-    },
     disabled: {
       control: {
         type: "boolean",
@@ -120,12 +108,6 @@ const IconButtonStories = {
     hidden: {
       control: {
         type: "boolean",
-      },
-    },
-    hover: {
-      control: {
-        type: "select",
-        options: Object.keys(mapPropsToTw.event),
       },
     },
   },
