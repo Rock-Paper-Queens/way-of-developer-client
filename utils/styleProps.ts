@@ -16,6 +16,16 @@ export type BorderProps = {
 export type FontProps = {
   fontColor?: keyof typeof mapPropsToTw.fontColor;
   fontSize?: keyof typeof mapPropsToTw.fontSize;
+  fontFamily?: keyof typeof mapPropsToTw.fontFamily;
+  fontWeight?: keyof typeof mapPropsToTw.fontWeight;
+  letterSpacing?: keyof typeof mapPropsToTw.letterSpacing;
+  lineHeight?: keyof typeof mapPropsToTw.lineHeight;
+  textVerticalAlign?: keyof typeof mapPropsToTw.textVerticalAlign;
+  textStyle?: keyof typeof mapPropsToTw.textStyle;
+  textDecoration?: keyof typeof mapPropsToTw.textDecoration;
+  textTransform?: keyof typeof mapPropsToTw.textTransform;
+  textOverflow?: keyof typeof mapPropsToTw.textOverflow;
+  placeHolderColor?: keyof typeof mapPropsToTw.placeHolderColor;
 };
 
 /* size props */
