@@ -11,6 +11,16 @@ export const getStyleConfigFromArgs = (args: StyleProps): StyleProps => {
     /* font props */
     fontColor,
     fontSize,
+    fontFamily,
+    fontWeight,
+    letterSpacing,
+    lineHeight,
+    textVerticalAlign,
+    textStyle,
+    textDecoration,
+    textTransform,
+    textOverflow,
+    placeHolderColor,
     /* size props */
     w,
     h,
@@ -22,11 +32,11 @@ export const getStyleConfigFromArgs = (args: StyleProps): StyleProps => {
     m,
     p,
     /* display props */
+    hidden,
     /* position props */
     position,
     positionDir,
     /* eventProps */
-    hidden,
     hover,
   } = args;
   return {
@@ -39,6 +49,16 @@ export const getStyleConfigFromArgs = (args: StyleProps): StyleProps => {
     /* font props */
     fontColor,
     fontSize,
+    fontFamily,
+    fontWeight,
+    letterSpacing,
+    lineHeight,
+    textVerticalAlign,
+    textStyle,
+    textDecoration,
+    textTransform,
+    textOverflow,
+    placeHolderColor,
     /* size props */
     w,
     h,
@@ -50,11 +70,11 @@ export const getStyleConfigFromArgs = (args: StyleProps): StyleProps => {
     m,
     p,
     /* display props */
+    hidden,
     /* position props */
     position,
     positionDir,
     /* eventProps */
-    hidden,
     hover,
   };
 };
