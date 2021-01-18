@@ -40,11 +40,11 @@ import {
   faGoogle,
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
-import { StyledSpan } from "./icon.styled";
-import { mapPropsToTw } from "../../../utils/mapPropsToTw";
+import { StyledSpan, StyledSpanProps } from "./icon.styled";
+import { SizeProp } from "@fortawesome/fontawesome-svg-core";
 
 /* Type Definition */
-export const iconType = {
+export const IconType = {
   "heart-active": fasHeart,
   "heart-inActive": farHeart,
   "bookmark-active": fasBookmark,
@@ -82,7 +82,7 @@ export const iconType = {
   "clock-inActive": farClock,
 };
 
-export const iconColor = {
+export const IconColor = {
   black: "#000000",
   white: "#ffffff",
   "grey-primary": "#F0F3F5",
@@ -93,41 +93,34 @@ export const iconColor = {
   "grey-light": "#FAFAFB",
 };
 
-export type iconSize =
-  | "xs"
-  | "lg"
-  | "sm"
-  | "1x"
-  | "2x"
-  | "3x"
-  | "4x"
-  | "5x"
-  | "6x"
-  | "7x"
-  | "8x"
-  | "9x"
-  | "10x";
-
 // export enum IconLib {
 //   ri = "react-icons",
 //   fa = "fontawesome",
 // }
-export interface IconProps {
+export type IconProps = StyledSpanProps & {
   // lib?: IconLib;
-  type: keyof typeof iconType;
-  color?: keyof typeof iconColor;
-  size?: iconSize;
-  m?: keyof typeof mapPropsToTw.margin;
-}
+  iconType: keyof typeof IconType;
+  iconColor?: keyof typeof IconColor;
+  iconSize?: SizeProp;
+};
 
 /* Component Creation */
-const Icon: React.FC<IconProps> = ({ type, color, size, m }) => {
+const Icon: React.FC<IconProps> = ({
+  iconType,
+  iconColor,
+  iconSize,
+  m,
+  w,
+  h,
+  position,
+  positionDir,
+}) => {
   return (
-    <StyledSpan m={m}>
+    <StyledSpan m={m} w={w} h={h} position={position} positionDir={positionDir}>
       <FontAwesomeIcon
-        icon={iconType[type]}
-        color={color ? iconColor[color] : iconColor.black}
-        size={size}
+        icon={IconType[iconType]}
+        color={iconColor ? IconColor[iconColor] : IconColor.black}
+        size={iconSize ? iconSize : "lg"}
       />
     </StyledSpan>
   );

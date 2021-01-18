@@ -6,7 +6,9 @@ import {
   SelectButton,
   StyledButtonProps,
 } from "./button.styled";
+import { getStyleConfigFromArgs } from "../../../utils/getStyleConfigFromArg";
 
+/* Type Definition */
 export enum ButtonType {
   default = "default styled button",
   checked = "already checked button (default base)",
@@ -20,31 +22,33 @@ export type ButtonProps = StyledButtonProps & {
   onClick: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
+/* Component Creation */
 const Button: React.FC<ButtonProps> = ({ children, buttonType, onClick, ...args }) => {
   const buttonConfig = { onClick };
+  const buttonStyleConfig = getStyleConfigFromArgs(args);
 
   switch (buttonType) {
     case ButtonType.checked:
       return (
-        <CheckedButton {...buttonConfig} {...args}>
+        <CheckedButton {...buttonConfig} {...buttonStyleConfig}>
           {children}
         </CheckedButton>
       );
     case ButtonType.auth:
       return (
-        <AuthButton {...buttonConfig} {...args}>
+        <AuthButton {...buttonConfig} {...buttonStyleConfig}>
           {children}
         </AuthButton>
       );
     case ButtonType.select:
       return (
-        <SelectButton {...buttonConfig} {...args}>
+        <SelectButton {...buttonConfig} {...buttonStyleConfig}>
           {children}
         </SelectButton>
       );
     default:
       return (
-        <DefaultButton {...buttonConfig} {...args}>
+        <DefaultButton {...buttonConfig} {...buttonStyleConfig}>
           {children}
         </DefaultButton>
       );

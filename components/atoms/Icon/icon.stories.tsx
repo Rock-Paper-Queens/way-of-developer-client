@@ -1,27 +1,27 @@
-import Icon, { IconProps, iconType, iconColor, iconSize } from "./index";
+import Icon, { IconProps, IconType, IconColor } from "./index";
 
 export const BasicIcon = ({ ...args }: IconProps): React.ReactElement => <Icon {...args} />;
 BasicIcon.args = {
-  type: "heart-active",
+  iconType: "heart-active",
 };
 
 const IconStories = {
   title: "atoms/Icon",
   component: Icon,
   argTypes: {
-    type: {
+    iconType: {
       control: {
         type: "select",
-        options: Object.keys(iconType),
+        options: Object.keys(IconType),
       },
     },
-    color: {
+    iconColor: {
       control: {
         type: "select",
-        options: Object.keys(iconColor),
+        options: Object.keys(IconColor),
       },
     },
-    size: {
+    iconSize: {
       control: {
         type: "select",
         options: ["xs", "lg", "sm", "1x", "2x", "3x", "4x", "5x", "6x", "7x", "8x", "9x", "10x"],

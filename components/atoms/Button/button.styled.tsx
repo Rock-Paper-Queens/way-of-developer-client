@@ -1,34 +1,32 @@
 import { HTMLProps } from "react";
 import tw, { styled } from "twin.macro";
 import { mapPropsToTw } from "../../../utils/mapPropsToTw";
+import {
+  BackgroundProps,
+  BorderProps,
+  FontProps,
+  SizeProps,
+  SpacingProps,
+  PositionProps,
+  EventProps,
+} from "../../../utils/styleProps";
 
-export type StyledButtonProps = HTMLProps<HTMLButtonElement> & {
-  /* button props */
-  bgColor?: keyof typeof mapPropsToTw.bgColor;
-  border?: keyof typeof mapPropsToTw.border;
-  borderColor?: keyof typeof mapPropsToTw.borderColor;
-  borderRadius?: keyof typeof mapPropsToTw.rounded;
-  /* font props */
-  color?: keyof typeof mapPropsToTw.color;
-  fontSize?: keyof typeof mapPropsToTw.fontSize;
-  /* size, spacing props */
-  w?: keyof typeof mapPropsToTw.width;
-  h?: keyof typeof mapPropsToTw.height;
-  m?: keyof typeof mapPropsToTw.margin;
-  p?: keyof typeof mapPropsToTw.padding;
-  minW?: keyof typeof mapPropsToTw.minWidth;
-  maxW?: keyof typeof mapPropsToTw.maxWidth;
-  /* event props */
-  disabled?: boolean;
-  hidden?: boolean;
-  hover?: keyof typeof mapPropsToTw.event;
-};
+export type StyledButtonProps = HTMLProps<HTMLButtonElement> &
+  BackgroundProps &
+  BorderProps &
+  FontProps &
+  SizeProps &
+  SpacingProps &
+  PositionProps &
+  EventProps & {
+    disabled?: boolean;
+  };
 
 export const DefaultButton = styled.button<StyledButtonProps>((props) => {
   /* button props */
   const { bgColor, border, borderColor, borderRadius } = props;
   /* font props */
-  const { color, fontSize } = props;
+  const { fontColor, fontSize } = props;
   /* size, spacing props */
   const { w, h, m, p, minW, maxW } = props;
   /* event props */
@@ -37,18 +35,18 @@ export const DefaultButton = styled.button<StyledButtonProps>((props) => {
   return [
     /* button style */
     bgColor ? mapPropsToTw.bgColor[bgColor] : mapPropsToTw.bgColor.black,
-    border ? mapPropsToTw.border[border] : mapPropsToTw.border["0"],
+    border ? mapPropsToTw.border[border] : mapPropsToTw.border.none,
     borderColor ? mapPropsToTw.borderColor[borderColor] : mapPropsToTw.borderColor.black,
     borderRadius ? mapPropsToTw.rounded[borderRadius] : mapPropsToTw.rounded.base,
 
     /* font style */
-    color ? mapPropsToTw.color[color] : mapPropsToTw.color.white,
+    fontColor ? mapPropsToTw.fontColor[fontColor] : mapPropsToTw.fontColor.white,
     fontSize ? mapPropsToTw.fontSize[fontSize] : mapPropsToTw.fontSize.sm,
 
     /* size, spacing style */
     w ? mapPropsToTw.width[w] : mapPropsToTw.width.auto,
     h ? mapPropsToTw.height[h] : mapPropsToTw.height["7"],
-    m ? mapPropsToTw.margin[m] : mapPropsToTw.margin["0"],
+    m ? mapPropsToTw.margin[m] : mapPropsToTw.margin.none,
     p ? mapPropsToTw.padding[p] : mapPropsToTw.padding.x5,
     minW && mapPropsToTw.minWidth[minW],
     maxW && mapPropsToTw.maxWidth[maxW],
@@ -65,8 +63,8 @@ export const DefaultButton = styled.button<StyledButtonProps>((props) => {
 });
 
 export const CheckedButton = styled(DefaultButton)<StyledButtonProps>(
-  ({ color, bgColor, border, borderColor }) => [
-    color ? mapPropsToTw.color[color] : mapPropsToTw.color.black,
+  ({ fontColor, bgColor, border, borderColor }) => [
+    fontColor ? mapPropsToTw.fontColor[fontColor] : mapPropsToTw.fontColor.black,
     bgColor ? mapPropsToTw.bgColor[bgColor] : mapPropsToTw.bgColor.white,
     border ? mapPropsToTw.border[border] : mapPropsToTw.border["1"],
     borderColor ? mapPropsToTw.borderColor[borderColor] : mapPropsToTw.borderColor.black,
@@ -84,8 +82,8 @@ export const AuthButton = styled(DefaultButton)<StyledButtonProps>(
 );
 
 export const SelectButton = styled(DefaultButton)<StyledButtonProps>(
-  ({ bgColor, color, fontSize, h }) => [
-    color ? mapPropsToTw.color[color] : mapPropsToTw.color.greyText,
+  ({ bgColor, fontColor, fontSize, h }) => [
+    fontColor ? mapPropsToTw.fontColor[fontColor] : mapPropsToTw.fontColor.greyText,
     bgColor ? mapPropsToTw.bgColor[bgColor] : mapPropsToTw.bgColor.greyPrimary,
     fontSize ? mapPropsToTw.fontSize[fontSize] : mapPropsToTw.fontSize.xs,
     h ? mapPropsToTw.height[h] : mapPropsToTw.height["6"],
