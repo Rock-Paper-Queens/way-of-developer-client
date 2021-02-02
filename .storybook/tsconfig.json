@@ -18,6 +18,13 @@
     "strict": true,
     "target": "esnext"
   },
-  "exclude": ["node_modules", "webpack.config.js"],
-  "include": ["**/*.ts", "**/*.tsx"]
+  "exclude": ["node_modules"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "../types.d.ts",
+    "../next-env.d.ts",
+    "../**/*.stories.ts",
+    "../**/*.stories.tsx"
+  ]
 }
